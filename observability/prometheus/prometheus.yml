@@ -8,8 +8,9 @@ scrape_configs:
       - targets: ['localhost:9090']
 
   - job_name: 'brisa-backend'
+    scheme: https
     static_configs:
-      - targets: ['backend:8000']
+      - targets: ['api.siaabck.ada.huginn.info']
     metrics_path: '/metrics'
 
   - job_name: 'tempo'
