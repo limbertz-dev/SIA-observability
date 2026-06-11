@@ -1,7 +1,6 @@
 services:
   prometheus:
     image: prom/prometheus:latest
-    container_name: brisa_prometheus
     restart: always
     ports:
       - "9090:9090"
@@ -19,7 +18,6 @@ services:
 
   loki:
     image: grafana/loki:latest
-    container_name: brisa_loki
     restart: always
     ports:
       - "3100:3100"
@@ -31,7 +29,6 @@ services:
 
   tempo:
     image: grafana/tempo:latest
-    container_name: brisa_tempo
     restart: always
     ports:
       - "3200:3200"
@@ -46,7 +43,6 @@ services:
 
   grafana:
     image: grafana/grafana:latest
-    container_name: brisa_grafana
     restart: always
     environment:
       GF_SECURITY_ADMIN_USER: ${GF_SECURITY_ADMIN_USER:-admin}
@@ -69,8 +65,7 @@ services:
 
 networks:
   brisa_network:
-    name: brisa_network
-    external: true
+    driver: bridge
 
 volumes:
   prometheus_data:
